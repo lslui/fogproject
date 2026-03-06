@@ -175,9 +175,11 @@ class ImageManager extends FOGManagerController
         /**
          * Get our other associative areas as needed
          */
+        $msFindWhere = array();
         if (isset($findWhere['id'])) {
-            $findWhere = array('imageID' => $findWhere['id']);
-            $msFindWhere = array('image' => $findWhere['id']);
+            $imageId = $findWhere['id'];
+            $findWhere = array('imageID' => $imageId);
+            $msFindWhere = array('image' => $imageId);
         }
         /**
          * Get running task ID's using these images
