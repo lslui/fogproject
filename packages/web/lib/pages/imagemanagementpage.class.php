@@ -249,9 +249,12 @@ class ImageManagementPage extends FOGPage
              */
             $imageSize = self::formatByteSize(
                 array_sum(
-                    explode(
-                        ':',
-                        $Image->size
+                    array_map(
+                        'floatval',
+                        array_filter(
+                            explode(':', (string)$Image->size),
+                            'strlen'
+                        )
                     )
                 )
             );
